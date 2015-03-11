@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/BrandIcon.png">
+
+    <title>Welcome to Orot- Sign up,Take a tour or Login </title>
+	<!-- AngularJS -->
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this project -->
+    <link href="index.css" rel="stylesheet">
+
+	<script src="jquery-1.11.2.min.js"></script>
+	
+	<!-- Font -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'>
+	
+  </head>
+
+  <body ng-app="Orot" class="loginBg">
+  <div ng-controller="LoginController as lgnCtr">
+    <div class="container">
+		<div class="row">
+					<div class="col-sm-6">
+				<div>
+				<h2 class="form-login-heading"><b>Welcome to</b> <img class="indexLogo" alt="Brand"
+							src="images/BrandIcon.png"><b>Orot.</b></h2>
+				<p class="mainText">Project Orot is  a site which uses crowdsourcing <br>
+				To expand human knowledge on diverse subjects.<br>
+				Learn,participate and share in a great experience.<br>
+				Be part of something great ,help us grow as a community,<br>
+				Take the tour and join today!<br>
+				<img class="Logo" src="images/logo.png" alt="Bringing wisdom to life">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div id="wrapper">
+		      		<form class="form-login" onsubmit="event.preventDefault()">
+		        		<h3 class="form-login-heading">Please log in</h3>
+		       			<input ng-model="lgnCtr.username" id="inputUserName" class="form-control" placeholder="Username" maxlength="20" required autofocus type="text">
+		        		<input ng-model="lgnCtr.password" id="inputPassword" class="form-control" placeholder="Password" maxlength="20" required type="password">
+		        		<button ng-click="lgnCtr.login()" id="btnLogIn" class="btnLogin btn btn-primary" type="submit">Log in</button>
+		        		<button ng-click="lgnCtr.loginAnonymously" id="btnLogIn" class="btnLogin btn btn-primary" type="submit">Log in anonymously</button>
+		        		<!-- Alert divs -->
+		        		<div id="notFound" class="alert alert-danger alertDiv" role="alert">The username or password you entered were not found, Please try again.</div>
+						<div id="empty" class="alert alert-warning alertDiv" role="alert">Fields cannot be empty!</div>
+		        		<hr>
+		        		<h4 class="form-login-heading">New to Orot? Sign up or Take the Tour!</h4>
+		        		<button onclick="location.href='register.html'" class="btn btn-primary btnLogin" type="submit">Sign up to Orot</button>
+		        		<button onclick="location.href='tour.html'" class="btn btn-primary btnLogin" type="submit">Take the Tour</button>
+		      		</form>
+				</div>
+			</div>
+
+		</div>
+    </div> <!-- /container -->
+    
+     </div>
+   
+
+  
+
+</body></html>

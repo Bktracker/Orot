@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Orot</title>
+	<!-- AngularJS -->
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this project -->
+    <link href="index.css" rel="stylesheet">
+
+	<script src="jquery-1.11.2.min.js"></script>
+	
+	<!-- Font -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'>
+	
+</head>
+<body ng-app="Orot" class="mainBg">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Navigation bar -->
+			<nav ng-controller="NavBarController as navC" id="nav1"
+				class="navbar navbar-default">
+				<div id="navLinks" class="container-fluid">
+					<div class="navbar-header">
+						<a href="main.html"> <img alt="Brand"
+							src="images/BrandIcon.png" width="48" height="48"> <span
+							class="navbar-brand navbar-right">Orot</span>
+						</a>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="profile.html#{{navC.activeusernick}}"> 		
+						 <img alt="Nav picture" class="navThumb" ng-src="{{navC.activeuserpic}}"/>
+					        {{navC.activeusernick}}
+						</a></li>
+						<li id="navSeperator">|</li>
+						<li><a ng-click="navC.logout()" href="index.html">Logout</a></li>
+					</ul>
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</div>
+	</div>
+
+
+
+	<div class="container">
+		<div ng-controller="MainController as main">
+		<div class="row rel">
+			<div class="col-sm-3 mainWrapper leftWrapper">
+				<!-- User Activity -->
+			</div>
+			<div class="col-sm-9 mainWrapper">
+			<!-- projects -->
+			
+			<div  ng-repeat="prj in projects">
+							<li class="horizontallist">
+							{{prj.Name}}<br>
+								<img title = {{prj.Description}}alt="User picture" class="projectThumb" ng-src="{{prj.Picture}}"/>
+															</li>
+						</div >
+		
+			<!-- workgroup -->
+			<!-- last work by user -->
+			<!-- site feed -->
+			<!-- workgroup feed -->
+			</div>
+		</div>
+			</div>
+	</div>
+
+
+
+</body>
+</html>

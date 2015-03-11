@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="images/BrandIcon.png">
+	
+	    <title>Welcome to Orot - Sign up</title>
+	
+		<!-- AngularJS -->
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		
+	    <!-- Bootstrap core CSS -->
+	    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	    <!-- Custom styles for this project -->
+	    <link href="index.css" rel="stylesheet">
+	
+		<script src="jquery-1.11.2.min.js"></script>
+		
+		<!-- Font -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'>
+	</head>
+	<body ng-app="Orot" class="registerBg">
+		<div ng-controller="RegisterController as regCtr">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div id="wrapper">
+							<form class="form-login" onsubmit="event.preventDefault()">
+								<h3 class="form-login-heading">Join Orot now.</h3>
+								<input id="txtUName" ng-model="regCtr.username" class="form-control" placeholder="Username (required)" type="text" maxlength="20" autocomplete="off" required/>
+								<input id="txtUPass" ng-model="regCtr.password" class="form-control" placeholder="Password (required)" type="password" maxlength="20" autocomplete="off" required/>
+								<input id="txtUNick" ng-model="regCtr.nickname" class="form-control" placeholder="Nickname (required)" type="text" maxlength="20" required/>
+								<textarea id="txtSDescr" ng-model="regCtr.description" class="form-control" placeholder="Description" maxlength="500"></textarea>
+								<input id="txtEmail" ng-model="regCtr.email" class="form-control" placeholder="Email" type="email" maxlength="80"/>
+								
+								Profile Picture: <input type="file" class="btn btn-default btn-file ng-file-select ng-model="regCtr.picture" name="file" accept="image/*" >
+								
+						
+								<button id="btnSignUp" ng-click="regCtr.register()" class="btn btnLogin btn-primary" type="submit">Sign Up</button> <span class="form-login-heading">| <a href="index.html" class="form-login-heading">Back</a></span>
+								<!-- Alert divs -->
+								<div id="danger" class="alert alert-danger alertDiv" role="alert">Something went wrong. Please try again.</div>
+								<div id="success" class="alert alert-success alertDiv" role="alert">User registered successfully! You are being redirected...</div>
+								<div id="missing" class="alert alert-warning alertDiv" role="alert">Required fields cannot be empty!</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+</html>

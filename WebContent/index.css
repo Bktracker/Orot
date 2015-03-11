@@ -1,0 +1,157 @@
+.loginBg {
+  background-image: url("images/loginBG.jpg");
+  background-attachment:fixed;
+  background-size:cover;
+}
+
+.form-login-heading, .profileText{
+	color: white;
+}
+
+.form-login .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 11px;
+}
+
+.btnLogin {
+    background-color: #185FDB;
+    border-color: #380798;
+    width: 130pt;
+}
+
+.btn-primary:focus, .btn-primary.focus,
+.btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary{
+    background-color: #185FDB;
+    border-color: #380798;
+    
+}
+
+.btn-primary:hover{
+	background-color: #21185F;
+	border-color: #380720;
+}
+
+.alertDiv{
+	display: none;
+	padding: 8px;
+	margin-top: 20px;
+}
+
+.indexLogo{
+	width: 42px;
+	height: 42px;
+	vertical-align: text-bottom;
+}
+
+.mainText {
+	color: #fff;
+	font-size: 23px;
+	line-height: 31px;
+	text-shadow: none;
+}
+
+.logo{
+	width: 222px;
+	height: 64px;
+}
+
+.registerBg{
+  background-image: url("images/register.jpg");
+  background-attachment:fixed;
+  background-size:cover;
+}
+
+.btn-file {
+position: relative;
+overflow: hidden;
+}
+.btn-file input[type=file] {
+position: absolute;
+top: 0;
+right: 0;
+min-width: 100%;
+min-height: 100%;
+font-size: 100px;
+text-align: right;
+filter: alpha(opacity=0);
+opacity: 0;
+outline: none;
+background: white;
+cursor: inherit;
+display: block;
+}	
+
+.mainBg{
+  background-image: url("images/main.jpg");
+  background-attachment:fixed;
+  background-size:cover;
+}
+
+#nav1{
+	background-color: #185FDB;
+	color: white;
+	border-radius: 0;
+	border: 0;
+	margin-bottom: 0;
+}
+
+.navText{
+	background-color: rgb(219,39,24);
+}
+
+.navThumb{
+	height: 25px;
+	width: 25px;
+	border-radius: 4px;
+	vertical-align: middle;
+}
+
+.projectThumb{
+	height: 100px;
+	width: 100px;
+	border-radius: 16px;
+	vertical-align: middle;
+}
+.horizontallist{
+	 float:left;
+}
+#navSeperator{
+	margin-top: 15px;
+}
+
+#navLinks li a, #navLinks span {
+	color: white;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	color: #fff;
+	background-color: #DB2718;	
+}
+
+.list-group-item.active>.badge, .nav-pills>.active>a>.badge {
+	color: #DB2718;
+	background-color: #fff;
+}
+
+.mainWrapper {
+	background-color: rgb(25, 27, 27);
+	opacity: 0.87;
+	padding: 16px 38px 24px;
+	border-radius: 0px 0px 35px 35px;
+	padding-top: 40px;
+	margin-top: 0px;
+	margin-bottom: 40px;
+}
+
+.leftWrapper{
+	left: -4%;
+}
+
+.rel{
+	position: relative;
+}
