@@ -57,33 +57,31 @@ public class RegisterServlet extends HttpServlet {
 			BasicDataSource ds = (BasicDataSource) context.lookup(AppConstants.DB_DATASOURCE);
 			conn = ds.getConnection();
 
-			String username = request.getParameter("username");
+			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String nickname = request.getParameter("nickname");
 			String description = request.getParameter("description");
-			String email = request.getParameter("email");
 
 
 			pstmt=conn.prepareStatement(AppConstants.ADD_NEW_USER);
-			pstmt.setString(1,username);
+			pstmt.setString(1,email);
 			pstmt.setString(2,password);
 			pstmt.setString(3,nickname);
 			pstmt.setString(4,description);
-			pstmt.setString(5,email);
-			pstmt.setString(6," ");
-			pstmt.setString(7,"ACTIVE");
-			pstmt.setDate(8,new java.sql.Date((new Date()).getTime()));
+			pstmt.setString(5," ");
+			pstmt.setString(6,"ACTIVE");
+			pstmt.setDate(7,new java.sql.Date((new Date()).getTime()));
+			pstmt.setString(8," ");
 			pstmt.setString(9," ");
-			pstmt.setString(10," ");
 			pstmt.executeUpdate();
 
 			conn.commit();
 
 
 			System.out.print("Creating new user:" );
-			System.out.println(username);
+			System.out.println(email);
 			HttpSession session=request.getSession();
-			session.setAttribute("username",username);
+			session.setAttribute("email",email);
 			session.setMaxInactiveInterval(60*60);
 
 			out.print("OK");

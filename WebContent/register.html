@@ -34,13 +34,12 @@
 						<div id="wrapper">
 							<form class="form-login" onsubmit="event.preventDefault()">
 								<h3 class="form-login-heading">Join Orot now.</h3>
-								<input id="txtUName" ng-model="regCtr.username" class="form-control" placeholder="Username (required)" type="text" maxlength="20" autocomplete="off" required/>
+								<input id="txtEmail" ng-model="regCtr.email" class="form-control" placeholder="Email (required)" type="email" maxlength="80" autocomplete="off" required/>
 								<input id="txtUPass" ng-model="regCtr.password" class="form-control" placeholder="Password (required)" type="password" maxlength="20" autocomplete="off" required/>
 								<input id="txtUNick" ng-model="regCtr.nickname" class="form-control" placeholder="Nickname (required)" type="text" maxlength="20" required/>
-								<textarea id="txtSDescr" ng-model="regCtr.description" class="form-control" placeholder="Description" maxlength="500"></textarea>
-								<input id="txtEmail" ng-model="regCtr.email" class="form-control" placeholder="Email" type="email" maxlength="80"/>
-								
-								Profile Picture: <input type="file" class="btn btn-default btn-file ng-file-select ng-model="regCtr.picture" name="file" accept="image/*" >
+								<textarea id="txtDescr" ng-model="regCtr.description" class="form-control" placeholder="Description" maxlength="500"></textarea>
+															
+								Profile Picture: <input type="file" class="btn btn-default btn-file" ng-file-select ng-model="regCtr.picture" name="file" onchange="regCtr.uploadFile(file)" accept="image/*" >
 								
 						
 								<button id="btnSignUp" ng-click="regCtr.register()" class="btn btnLogin btn-primary" type="submit">Sign Up</button> <span class="form-login-heading">| <a href="index.html" class="form-login-heading">Back</a></span>
@@ -48,6 +47,8 @@
 								<div id="danger" class="alert alert-danger alertDiv" role="alert">Something went wrong. Please try again.</div>
 								<div id="success" class="alert alert-success alertDiv" role="alert">User registered successfully! You are being redirected...</div>
 								<div id="missing" class="alert alert-warning alertDiv" role="alert">Required fields cannot be empty!</div>
+								<div id="secure" class="alert alert-warning alertDiv" role="alert">password is not secure,use both lower and upper case letters ,a digit and a special character of at least 8 characters</div>
+								
 							</form>
 						</div>
 					</div>

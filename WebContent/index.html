@@ -46,12 +46,12 @@
 				<div id="wrapper">
 		      		<form class="form-login" onsubmit="event.preventDefault()">
 		        		<h3 class="form-login-heading">Please log in</h3>
-		       			<input ng-model="lgnCtr.username" id="inputUserName" class="form-control" placeholder="Username" maxlength="20" required autofocus type="text">
+		       			<input ng-model="lgnCtr.email" class="form-control" placeholder="Email" maxlength="80" required autofocus type="email">
 		        		<input ng-model="lgnCtr.password" id="inputPassword" class="form-control" placeholder="Password" maxlength="20" required type="password">
 		        		<button ng-click="lgnCtr.login()" id="btnLogIn" class="btnLogin btn btn-primary" type="submit">Log in</button>
 		        		<button ng-click="lgnCtr.loginAnonymously" id="btnLogIn" class="btnLogin btn btn-primary" type="submit">Log in anonymously</button>
 		        		<!-- Alert divs -->
-		        		<div id="notFound" class="alert alert-danger alertDiv" role="alert">The username or password you entered were not found, Please try again.</div>
+		        		<div id="notFound" class="alert alert-danger alertDiv" role="alert">The email or password you entered were not found, Please try again.</div>
 						<div id="empty" class="alert alert-warning alertDiv" role="alert">Fields cannot be empty!</div>
 		        		<hr>
 		        		<h4 class="form-login-heading">New to Orot? Sign up or Take the Tour!</h4>

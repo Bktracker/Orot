@@ -65,25 +65,25 @@ public class LoginServlet extends HttpServlet {
 			BasicDataSource ds = (BasicDataSource) context.lookup(AppConstants.DB_DATASOURCE);
 			conn = ds.getConnection();
 
-			String username = request.getParameter("username");
+			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 
 			pstmt=conn.prepareStatement(AppConstants.CHECK_USERNAME_PASSWORD);
-			pstmt.setString(1,username);
+			pstmt.setString(1,email);
 			pstmt.setString(2,password);
 			rs = pstmt.executeQuery();
 
 			if (!rs.next()){ //data not found at DB
 				out.print("notFound");
-				System.out.print(username);
+				System.out.print(email);
 				System.out.println(" failed to login");
 			} else {//return user info
-				System.out.print(username);
+				System.out.print(email);
 				System.out.println(" logged in succesfuly");
 				rs.close();
 				pstmt.close();
 				HttpSession session=request.getSession();
-				session.setAttribute("username",username);
+				session.setAttribute("email",email);
 				session.setMaxInactiveInterval(60*60);
 				
 				

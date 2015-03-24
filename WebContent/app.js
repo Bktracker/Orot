@@ -5,7 +5,7 @@
 	var app = angular.module('Orot', []);
 //	this conroler allow login and manaegs sessions
 	app.controller('LoginController',['$http',function($http){
-		this.username="";
+		this.email="";
 		this.password="";
 
 		$http({
@@ -21,7 +21,7 @@
 		}); 
 
 		this.login =function() {
-			if (angular.isUndefined(this.username)  ||  angular.isUndefined(this.password) || this.password.trim =="" ) {
+			if (angular.isUndefined(this.email)  ||  angular.isUndefined(this.password) || this.password.trim =="" ) {
 				$("#notFound").hide();
 				$("#empty").show();
 				return ;	
@@ -37,7 +37,7 @@
 						str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 					return str.join("&");
 				},
-				data: {username: this.username, password: this.password},
+				data: {email: this.email, password: this.password},
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).success( function(data) {
 				if (data == "notFound") {
@@ -51,18 +51,41 @@
 		}; 
 	}]);
 	app.controller('RegisterController',['$http',function($http){
-		this.username="";
+		this.email="";
 		this.password="";
 		this.nickname="";
 		this.description="";
 		this.picture="";
-		this.email="";
+		
 
+		this.uploadFile = function(files) {
+			alert("hi");
+		    var fd = new FormData();
+		    //Take the first selected file
+		    fd.append("file", files[0]);
+
+		    $http.post(uploadUrl, fd, {
+		        withCredentials: true,
+		        headers: {'Content-Type': undefined },
+		        transformRequest: angular.identity
+		    }).success(  ).error();
+
+		};	    
 		this.register =function() {
-			if(angular.isUndefined(this.username)  ||  angular.isUndefined(this.password) || angular.isUndefined(this.nickname) || this.username.trim =="" || this.password.trim =="" || this.nickname.trim =="") {
+			if(angular.isUndefined(this.email)  ||  angular.isUndefined(this.password) || angular.isUndefined(this.nickname) || this.email.trim =="" || this.password.trim =="" || this.nickname.trim =="") {
 				$("#danger").hide();
 				$("#success").hide();
+				$("#secure").hide();
 				$("#missing").show();
+				return ;
+			}
+		
+			var SecurePattern=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;  
+			if(!this.password.match(SecurePattern))   {
+				$("#secure").show();
+				$("#danger").hide();
+				$("#success").hide();
+				$("#missing").hide();
 				return ;
 			}
 
@@ -75,14 +98,14 @@
 							str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 						return str.join("&");
 					},
-					data: {username: this.username, password: this.password, nickname: this.nickname, description: this.description, email: this.email, picture:this.picture },
+					data: {email: this.email, password: this.password, nickname: this.nickname, description: this.description, picture:this.picture },
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				}).success( function(data) {
 					if (data == "OK") 
 					{
-						localStorage.username=$("#txtUName").val().trim();
+						localStorage.email=$("#txtEmail").val().trim();
 						localStorage.usernick=$("#txtUNick").val().trim();
-						localStorage.userdesc=$("#txtSDescr").val().trim();
+						localStorage.userdesc=$("#txtDescr").val().trim();
 
 						$("#danger").hide();
 						$("#missing").hide();
@@ -119,7 +142,7 @@
 				$location.path('index.html')
 			});
 
-			localStorage.username="";
+			localStorage.email="";
 			localStorage.userpic="";
 			localStorage.usernick="";
 			localStorage.userdesc="";

@@ -87,18 +87,17 @@ public class OrotServletContextListener implements ServletContextListener {
 			
 			
 			
-			System.out.println("creating admin user,username=AdminUser24,password=Admin!24");
+			System.out.println("creating admin user,email=admin@haifa.ac.il,password=password");
 			pstmt=conn.prepareStatement(AppConstants.ADD_NEW_USER);
-			pstmt.setString(1,"AdminUser24");
-			pstmt.setString(2,"Admin!24");
+			pstmt.setString(1,"admin@haifa.ac.il");
+			pstmt.setString(2,"password");
 			pstmt.setString(3,"Administartor");
-			pstmt.setString(4," ");
+			pstmt.setString(4,"descrition");
 			pstmt.setString(5," ");
-			pstmt.setString(6," ");
-			pstmt.setString(7,"ACTIVE");
-			pstmt.setDate(8,new java.sql.Date((new Date()).getTime()));
+			pstmt.setString(6,"ACTIVE");
+			pstmt.setDate(7,new java.sql.Date((new Date()).getTime()));
+			pstmt.setString(8," ");
 			pstmt.setString(9," ");
-			pstmt.setString(10," ");
 			pstmt.executeUpdate();
 			conn.commit();
 			pstmt.close();

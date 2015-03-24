@@ -29,16 +29,15 @@ public interface AppConstants {
 
 	
 	public final String CREATE_USER_TABLE="CREATE TABLE USERS("
-			+ "U_USERNAME VARCHAR(20) CHECK (U_USERNAME <> '') PRIMARY KEY,"
+			+ "U_EMAIL VARCHAR(80) CHECK (U_EMAIL <> '') PRIMARY KEY,"
 			+ "U_PASSWORD VARCHAR(20) NOT NULL CHECK (U_PASSWORD <> ''),"
 			+ "U_NICKNAME VARCHAR(20) NOT NULL CHECK (U_NICKNAME <> ''),"
 			+ "U_DESCRIPTION VARCHAR(500),"
-			+ "U_EMAIL VARCHAR(80),"
 			+ "U_CONFIG VARCHAR(254),"
 			+ "U_STATUS VARCHAR(32),"//ACTIVE,BANNED,SUSPENDED
-			+ "U_JOIN_DATE DATE,"//ACTIVE,BANNED,SUSPENDED
-			+ "U_PHONE VARCHAR(25),"//ACTIVE,BANNED,SUSPENDED
-			+ "U_PICTURE VARCHAR(255),"//ACTIVE,BANNED,SUSPENDED
+			+ "U_JOIN_DATE DATE,"
+			+ "U_PHONE VARCHAR(25),"
+			+ "U_PICTURE VARCHAR(255),"
 			+ "UNIQUE (U_NICKNAME))";
 	
 	
@@ -47,14 +46,30 @@ public interface AppConstants {
 			+ "P_NAME VARCHAR(20) CHECK (P_NAME <> '') PRIMARY KEY, "
 			+ "P_DESCRIPTION VARCHAR(500),"
 			+ "P_ICON VARCHAR(80) )";
-			
+	
+	public final String CREATE_ADMIN_TABLE="CREATE TABLE ADMINISTRATORS("
+			+ "A_EMAIL VARCHAR(80) PRIMARY KEY, "
+			+ "FOREIGN KEY	(A_EMAIL) REFERENCES USERS(U_EMAIL))";
+	
+	public final String CREATE_TECHSUPPORT_TABLE="CREATE TABLE TECHSUPPORT("
+			+ "T_EMAIL VARCHAR(80) PRIMARY KEY, "
+			+ "FOREIGN KEY	(T_EMAIL) REFERENCES USERS(U_EMAIL))";
+	
+	public final String CREATE_LEADER_TABLE="CREATE TABLE LEADER( "
+			+ "L_EMAIL VARCHAR(80) ,"
+			+ "L_NAME VARCHAR(20), "
+			+ "PRIMARY KEY	(L_USERNAME ,L_NAME), "
+			+ "FOREIGN KEY	(L_EMAIL) REFERENCES USERS(U_EMAIL) ,"
+			+ "FOREIGN KEY	(L_NAME) REFERENCES PROJECT(P_NAME))";
+	
+
 	/*---------------------------------------------------------------------------------------------------------*/
 	/*                                   sql select table queries                                              */
 	/*---------------------------------------------------------------------------------------------------------*/	
 
 	public final String CHECK_USERNAME_PASSWORD= "SELECT * "
 			+ "FROM USERS "
-			+ "WHERE U_USERNAME=? "
+			+ "WHERE U_EMAIL=? "
 			+ "AND U_PASSWORD=?";
 	
 	
@@ -63,7 +78,7 @@ public interface AppConstants {
 	/*---------------------------------------------------------------------------------------------------------*/
 	/*                                   sql insert and delete queries                                         */
 	/*---------------------------------------------------------------------------------------------------------*/
-	public final String ADD_NEW_USER="INSERT INTO USERS VALUES(?,?,?,?,?,?,?,?,?,?)";
+	public final String ADD_NEW_USER="INSERT INTO USERS VALUES(?,?,?,?,?,?,?,?,?)";
 	public final String ADD_NEW_PROJECT="INSERT INTO PROJECT VALUES(?,?,?)";
 	
 	
