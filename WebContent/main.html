@@ -34,9 +34,8 @@
 					</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="profile.html#{{navC.activeusernick}}"> 		
-						 <img alt="Nav picture" class="navThumb" ng-src="{{navC.activeuserpic}}"/>
-					        {{navC.activeusernick}}
-					        {{navC.picture}}
+						 <img alt="Nav picture" class="navThumb" ng-src=" {{user[0].Picture}}"/>
+						{{user[0].Nickname}}
 						</a></li>
 						<li id="navSeperator">|</li>
 						<li><a ng-click="navC.logout()" href="index.html">Logout</a></li>

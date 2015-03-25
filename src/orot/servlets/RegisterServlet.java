@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 			pstmt.setString(6,"ACTIVE");
 			pstmt.setDate(7,new java.sql.Date((new Date()).getTime()));
 			pstmt.setString(8," ");
-			String picLocation =  String.format("ProfilePictures/" +fileName);
+			String picLocation =  String.format("images/ProfilePictures/" +fileName);
 			pstmt.setString(9,picLocation);
 			pstmt.executeUpdate();
 

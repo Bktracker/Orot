@@ -169,9 +169,6 @@
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success( function(data) {
 			$scope.user = data;	
-			alert(data);
-			alert(data.Picture);
-			this.picture=data.Picture;
 		});
 
 	}]);
