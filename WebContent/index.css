@@ -146,6 +146,12 @@ display: block;
 	padding-top: 40px;
 	margin-top: 0px;
 	margin-bottom: 40px;
+	direction: rtl;
+}
+
+.rightWrapper{
+	position: absolute;
+	right: -4%;
 }
 
 .leftWrapper{

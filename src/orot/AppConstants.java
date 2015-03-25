@@ -7,6 +7,7 @@ import java.util.Collection;
 import com.google.gson.reflect.TypeToken;
 
 import orot.model.Project;
+import orot.model.Users;
 
 
 
@@ -62,7 +63,13 @@ public interface AppConstants {
 			+ "FOREIGN KEY	(L_EMAIL) REFERENCES USERS(U_EMAIL) ,"
 			+ "FOREIGN KEY	(L_NAME) REFERENCES PROJECT(P_NAME))";
 	
-
+	public final String CREATE_TRANSCRIPT_SCHEME_TABLE="CREATE TABLE TRANSCRIPT_SCHEME( "
+			+ "TS_ID INT PRIMARY KEY, "
+			+ "TS_PGP VARCHAR(20), "
+			+ "TS_EMAIL VARCHAR(80), "
+			+ "TS_NUM_OF_COLUMNS  INT,"
+			+ "TS_NUM_OF_ROWS INT,"
+			+ "TS_ABNORMAL_SECTION VARCHAR(128)";
 	/*---------------------------------------------------------------------------------------------------------*/
 	/*                                   sql select table queries                                              */
 	/*---------------------------------------------------------------------------------------------------------*/	
@@ -71,7 +78,11 @@ public interface AppConstants {
 			+ "FROM USERS "
 			+ "WHERE U_EMAIL=? "
 			+ "AND U_PASSWORD=?";
-	
+
+
+	public final String SELECT_USER_BY_EMAIL ="SELECT * "
+			+ "FROM USERS "
+			+ "WHERE U_EMAIL=? ";
 	
 	public final String SELECT_ALL_PROJECTS= "SELECT * "
 			+ "FROM PROJECT ";
@@ -82,9 +93,13 @@ public interface AppConstants {
 	public final String ADD_NEW_PROJECT="INSERT INTO PROJECT VALUES(?,?,?)";
 	
 	
-	
+	/*---------------------------------------------------------------------------------------------------------*/
+	/*                                   object lists                                                          */
+	/*---------------------------------------------------------------------------------------------------------*/
+
 	
 	public final Type PROJECT_COLLECTION = new TypeToken<Collection<Project>>() {}.getType();
+	public final Type USER_COLLECTION = new TypeToken<Collection<Users>>() {}.getType();
 }
 
 

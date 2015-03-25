@@ -50,27 +50,23 @@
 
 		}; 
 	}]);
-	app.controller('RegisterController',['$http',function($http){
+	app.controller('RegisterController',['$http','$scope',function($http,$scope){
 		this.email="";
 		this.password="";
 		this.nickname="";
 		this.description="";
 		this.picture="";
 		
+        $scope.filesToUpload = null;
 
-		this.uploadFile = function(files) {
-			alert("hi");
-		    var fd = new FormData();
-		    //Take the first selected file
-		    fd.append("file", files[0]);
-
-		    $http.post(uploadUrl, fd, {
-		        withCredentials: true,
-		        headers: {'Content-Type': undefined },
-		        transformRequest: angular.identity
-		    }).success(  ).error();
-
-		};	    
+        $scope.fileInputChanged = function (element) {
+        	
+            $scope.$apply(function ($scope) {
+                $scope.fileToUpload = element.files[0];
+            });
+          
+        };
+        
 		this.register =function() {
 			if(angular.isUndefined(this.email)  ||  angular.isUndefined(this.password) || angular.isUndefined(this.nickname) || this.email.trim =="" || this.password.trim =="" || this.nickname.trim =="") {
 				$("#danger").hide();
@@ -89,18 +85,25 @@
 				return ;
 			}
 
+            var formData = new FormData();
+            formData.append("email",this.email);
+            formData.append("password", this.password);
+            formData.append("nickname", this.nickname);
+            formData.append("description", this.description);
+            formData.append("file", $scope.fileToUpload);
+
+
 				$http({
 					method: 'POST',
 					url: "/Orot/register",
-					transformRequest: function(obj) {
-						var str = [];
-						for(var p in obj)
-							str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-						return str.join("&");
-					},
-					data: {email: this.email, password: this.password, nickname: this.nickname, description: this.description, picture:this.picture },
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-				}).success( function(data) {
+	                 headers: {
+	                        'Content-Type': undefined
+	                    },
+	                    data: formData,
+	                    transformRequest: function (data) {
+	                        return data;
+	                    }
+	                    }).success( function(data) {
 					if (data == "OK") 
 					{
 						localStorage.email=$("#txtEmail").val().trim();
@@ -124,13 +127,14 @@
 	}]);
 
 //	this contorl get the user data and allows logout
-	app.controller('NavBarController',['$http',function($http){
+	app.controller('NavBarController',['$http','$scope',function($http,$scope){
+		this.user;
 	//	this.activeusername=localStorage.username;
 	//	this.activeuserpic=localStorage.userpic;
 	//	this.activeusernick=localStorage.usernick;
 	//	this.activeuserdesc=localStorage.userdesc;
 		this.activeuserpic="images/defaultPic.png";
-		
+		this.picture="";		
 		this.logout =function() {
 
 			$http({
@@ -157,7 +161,18 @@
 			if (data == "notFound") {
 				window.location.href="index.html";
 			}
-		}); 
+		});
+		
+		$http({ 
+			method: 'GET',
+			url: '/Orot/profile',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success( function(data) {
+			$scope.user = data;	
+			alert(data);
+			alert(data.Picture);
+			this.picture=data.Picture;
+		});
 
 	}]);
 	
@@ -171,4 +186,15 @@
 			$scope.projects = data;	
 		}); 
 	}]);
+	
+	app.controller('TranscriptController',['$http','$scope',function($http,$scope){
+		this.Name="Genesis";
+		this.Picture="http://www.piyut.org.il/Files/RFile/622.jpg";
+		
+		$scope.Lines =["L1","L2","L3","L4","L5","L6"];
+
+
+		
+	}]);
+	
 })();

@@ -97,7 +97,7 @@ public class OrotServletContextListener implements ServletContextListener {
 			pstmt.setString(6,"ACTIVE");
 			pstmt.setDate(7,new java.sql.Date((new Date()).getTime()));
 			pstmt.setString(8," ");
-			pstmt.setString(9," ");
+			pstmt.setString(9,"ProfilePictures/admin.jpg");
 			pstmt.executeUpdate();
 			conn.commit();
 			pstmt.close();

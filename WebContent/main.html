@@ -36,6 +36,7 @@
 						<li><a href="profile.html#{{navC.activeusernick}}"> 		
 						 <img alt="Nav picture" class="navThumb" ng-src="{{navC.activeuserpic}}"/>
 					        {{navC.activeusernick}}
+					        {{navC.picture}}
 						</a></li>
 						<li id="navSeperator">|</li>
 						<li><a ng-click="navC.logout()" href="index.html">Logout</a></li>
@@ -52,6 +53,8 @@
 		<div ng-controller="MainController as main">
 		<div class="row rel">
 			<div class="col-sm-3 mainWrapper leftWrapper">
+			<img alt="User picture" class="projectThumb" ng-src="images/ProfilePictures/sh2412.jpg"/>
+			{{user.Picture}}
 				<!-- User Activity -->
 			</div>
 			<div class="col-sm-9 mainWrapper">
@@ -60,8 +63,8 @@
 			<div  ng-repeat="prj in projects">
 							<li class="horizontallist">
 							{{prj.Name}}<br>
-								<img title = {{prj.Description}}alt="User picture" class="projectThumb" ng-src="{{prj.Picture}}"/>
-															</li>
+								<img title = {{prj.Description}} alt="User picture" class="projectThumb" ng-src="{{prj.Picture}}"/>
+							</li>
 						</div >
 		
 			<!-- workgroup -->

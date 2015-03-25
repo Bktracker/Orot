@@ -32,15 +32,19 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div id="wrapper">
+						
+
+								
 							<form class="form-login" onsubmit="event.preventDefault()">
 								<h3 class="form-login-heading">Join Orot now.</h3>
 								<input id="txtEmail" ng-model="regCtr.email" class="form-control" placeholder="Email (required)" type="email" maxlength="80" autocomplete="off" required/>
 								<input id="txtUPass" ng-model="regCtr.password" class="form-control" placeholder="Password (required)" type="password" maxlength="20" autocomplete="off" required/>
 								<input id="txtUNick" ng-model="regCtr.nickname" class="form-control" placeholder="Nickname (required)" type="text" maxlength="20" required/>
 								<textarea id="txtDescr" ng-model="regCtr.description" class="form-control" placeholder="Description" maxlength="500"></textarea>
+										
 															
-								Profile Picture: <input type="file" class="btn btn-default btn-file" ng-file-select ng-model="regCtr.picture" name="file" onchange="regCtr.uploadFile(file)" accept="image/*" >
-								
+								Profile Picture: <input type="file" class="btn btn-default btn-file" ng-file-select onchange="angular.element(this).scope().fileInputChanged(this);" id="fileInput" name="file" id="file" accept="image/*" >
+          					
 						
 								<button id="btnSignUp" ng-click="regCtr.register()" class="btn btnLogin btn-primary" type="submit">Sign Up</button> <span class="form-login-heading">| <a href="index.html" class="form-login-heading">Back</a></span>
 								<!-- Alert divs -->
